@@ -168,6 +168,8 @@ all: parent.cpp child.cpp
 	g++ -o parent parent.cpp
 	g++ -o child child.cpp
 	./parent
+clean:
+	rm parent child
 ```
 
 ## Выполнение программы
