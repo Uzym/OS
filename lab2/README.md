@@ -123,7 +123,6 @@ int main(int argc, char const *argv[])
         return -1;
     } else if (id == 0) {
         while(true) {
-            fflush(stdout);
             size_t len;
             read(fd2[0], &len, sizeof(len));
             char *buf = new char[len];
@@ -139,7 +138,6 @@ int main(int argc, char const *argv[])
         }
     } else {
         while(true) {
-            fflush(stdout);
             size_t len;
             read(fd1[0], &len, sizeof(len));
             char *buf = new char[len];
