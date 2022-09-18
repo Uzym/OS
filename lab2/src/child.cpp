@@ -8,7 +8,7 @@ int main(int argc, char const *argv[])
     int fd[2];
     fd[FD_OUTPUT] = std::stoi(argv[0]);
     fd[FD_INPUT] = std::stoi(argv[1]);
-    if (dup2(fd[FD_INPUT], STDIN) == -1) {
+    if (dup2(STDOUT, fd[FD_INPUT]) == -1) {
         std::cerr << "dub error\n";
         return -1;
     }
