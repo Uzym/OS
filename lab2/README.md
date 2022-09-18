@@ -124,6 +124,8 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+```
+
 ### note.h
 ```h
 #ifndef _NOTE_H_
@@ -137,7 +139,6 @@ int main(int argc, char const *argv[])
 #endif
 ```
 
-```
 ### CMakeLists.txt
 ```
 project(project_name)
