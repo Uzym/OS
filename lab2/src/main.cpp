@@ -10,7 +10,7 @@ int main() {
         std::cerr << "input error\n";
         return -1;
     }
-    
+
     int file = open(file_name.c_str(), O_RDONLY);
     if (file == -1) {
         std::cerr << "file error\n";
@@ -28,17 +28,25 @@ int main() {
         std::cerr << "fork error\n";
         return -1;
     } else if (fork_id == 0) {
-        execlp("./child", 
-                std::to_string(fd[FD_OUTPUT]).c_str(), 
-                std::to_string(fd[FD_INPUT]).c_str(), 
-                std::to_string(file).c_str(),
-                NULL
+        execlp("./child",
+               std::to_string(fd[FD_OUTPUT]).c_str(),
+               std::to_string(fd[FD_INPUT]).c_str(),
+               std::to_string(file).c_str(),
+               NULL
         );
     } else {
+        int sum;
+        char buf;
+        while (read(fd[FD_OUTPUT], &buf, sizeof(buf)) > 0 && buf != EOF) {
+            read(fd[FD_OUTPUT], &sum, sizeof(sum));
+            std::cout << sum << std::endl;
+        }
+        /*
         if (dup2(STDOUT, fd[FD_OUTPUT]) == -1) {
             std::cerr << "dub error\n";
             return -1;
         }
+        */
     }
 
     close(fd[FD_INPUT]);
