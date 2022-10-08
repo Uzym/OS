@@ -79,10 +79,6 @@ int main(int argc, char* argv[]) {
         pthread_join(threads[i].id, NULL);
     }
 
-    for (auto e: array)
-        std::cout << e << ' ';
-    std::cout << '\n';
-
 
     for (int size = minrun; size < N; size = 2*size) {
         for (int l = 0; l < N; l += 2*size) {

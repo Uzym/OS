@@ -3,6 +3,6 @@ project(os_lab3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set ( CMAKE_C_FLAGS "-pthread")
+set ( CMAKE_C_FLAGS "-pthread -fsanitize=address")
 
 add_executable(main ./src/main.cpp)

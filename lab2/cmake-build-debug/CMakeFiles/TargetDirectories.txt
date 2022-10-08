@@ -1,0 +1,4 @@
+/home/lyutoev/workshop/os/OS/lab2/cmake-build-debug/CMakeFiles/main.dir
+/home/lyutoev/workshop/os/OS/lab2/cmake-build-debug/CMakeFiles/child.dir
+/home/lyutoev/workshop/os/OS/lab2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/lyutoev/workshop/os/OS/lab2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
