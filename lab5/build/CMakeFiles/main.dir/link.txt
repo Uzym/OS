@@ -1,0 +1,1 @@
+/usr/bin/cc -fsanitize=address CMakeFiles/main.dir/src/main2.c.o -o main 

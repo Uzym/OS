@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dlfcn.h>
-#include "../include/lib.h"
 
 const char* lib1 = "./liblib1.so";
 const char* lib2 = "./liblib2.so";
