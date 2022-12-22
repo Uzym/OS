@@ -1,0 +1,7 @@
+/home/lyutoev/workshop/os/OS/lab6/build/CMakeFiles/lib_tree.dir
+/home/lyutoev/workshop/os/OS/lab6/build/CMakeFiles/lib_zmq_manage.dir
+/home/lyutoev/workshop/os/OS/lab6/build/CMakeFiles/api_daemon.dir
+/home/lyutoev/workshop/os/OS/lab6/build/CMakeFiles/client.dir
+/home/lyutoev/workshop/os/OS/lab6/build/CMakeFiles/server.dir
+/home/lyutoev/workshop/os/OS/lab6/build/CMakeFiles/edit_cache.dir
+/home/lyutoev/workshop/os/OS/lab6/build/CMakeFiles/rebuild_cache.dir

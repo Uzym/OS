@@ -50,6 +50,15 @@ bool Tree::delete_node(int id)
     return true;
 }
 
+std::set <int> Tree::get_node_list()
+{
+    std::set <int> node_set;
+    for (auto iter : this->tree) {
+        node_set.insert(iter.first);
+    }
+    return node_set;
+}
+
 void Tree::print_tree()
 {
     for (auto iter : this->tree) {

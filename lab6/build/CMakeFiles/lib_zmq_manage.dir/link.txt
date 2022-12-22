@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -shared -Wl,-soname,liblib_zmq_manage.so -o liblib_zmq_manage.so CMakeFiles/lib_zmq_manage.dir/src/zmq_manage.cpp.o 

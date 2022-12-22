@@ -175,7 +175,7 @@ int main(int argc, char const *argv[])
                 childs[i].unbind(get_port_name(BASE_PORT + std::stoi(result) + 1));
             }
 
-            // parent_socket.disconnect(get_port_name(parent_port));
+            parent_socket.disconnect(get_port_name(parent_port));
             flag = false;
 
         }
