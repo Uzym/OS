@@ -1,1 +1,0 @@
-/usr/bin/cc -fsanitize=address CMakeFiles/main1.dir/src/main1.c.o -o main1  -Wl,-rpath,/home/lyutoev/workshop/os/OS/lab5/build liblib1.so -lm 

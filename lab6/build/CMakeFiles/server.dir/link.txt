@@ -1,1 +1,0 @@
-/usr/bin/c++ -fsanitize=address -g CMakeFiles/server.dir/src/server.cpp.o -o server  -Wl,-rpath,/home/lyutoev/workshop/os/OS/lab6/build -lzmq liblib_zmq_manage.so 

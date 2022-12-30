@@ -1,3 +1,0 @@
-/home/lyutoev/workshop/os/OS/lab4/build/CMakeFiles/main.dir
-/home/lyutoev/workshop/os/OS/lab4/build/CMakeFiles/edit_cache.dir
-/home/lyutoev/workshop/os/OS/lab4/build/CMakeFiles/rebuild_cache.dir

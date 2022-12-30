@@ -1,1 +1,0 @@
-/usr/bin/c++ -fsanitize=address -g CMakeFiles/client.dir/src/client.cpp.o -o client  -Wl,-rpath,/home/lyutoev/workshop/os/OS/lab6/build -lzmq liblib_tree.so liblib_zmq_manage.so 

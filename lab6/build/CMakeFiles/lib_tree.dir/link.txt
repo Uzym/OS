@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -shared -Wl,-soname,liblib_tree.so -o liblib_tree.so CMakeFiles/lib_tree.dir/src/tree.cpp.o 

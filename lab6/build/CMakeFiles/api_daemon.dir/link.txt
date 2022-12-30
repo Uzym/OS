@@ -1,1 +1,0 @@
-/usr/bin/c++ -fsanitize=address -g CMakeFiles/api_daemon.dir/src/api_daemon.cpp.o -o api_daemon  -Wl,-rpath,/home/lyutoev/workshop/os/OS/lab6/build -lzmq liblib_tree.so liblib_zmq_manage.so 

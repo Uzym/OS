@@ -1,0 +1,5 @@
+/home/lyutoev/workshop/os/OS/cp/cmake-build-debug/CMakeFiles/A.dir
+/home/lyutoev/workshop/os/OS/cp/cmake-build-debug/CMakeFiles/B.dir
+/home/lyutoev/workshop/os/OS/cp/cmake-build-debug/CMakeFiles/C.dir
+/home/lyutoev/workshop/os/OS/cp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/lyutoev/workshop/os/OS/cp/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -9,9 +9,9 @@
 #include <set>
 #include <map>
 
-const int API_PORT = 2000;
+const int API_PORT = 5040;
 const int BASE_PORT = 5050;
-const int WAIT_TIME = 10000;
+const int WAIT_TIME = 1000;
 const int manage_worker_id = -1;
 
 std::string get_port_name(const int port);

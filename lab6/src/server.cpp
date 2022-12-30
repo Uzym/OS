@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
 
         result = "", msg_str = "";
 
-        std::cout << "log " << id << ": " << request_string << '\n';
+        //std::cout << "log " << id << ": " << request_string << '\n';
 
         command_stream >> command;
 
@@ -128,12 +128,13 @@ int main(int argc, char const *argv[])
             bool flag_get_remove_id = false;
             for (int i = 0; i < childs.size(); i ++) {
 
-                send_message(childs[i], "get_child_id_list 0");
+                send_message(childs[i], "get_id");
                 result = recieve_message(childs[i]);
                 
                 if (result == std::to_string(remove_id) + " ") {
                     
                     send_message(childs[i], "kill");
+                    sleep(1);
                     childs[i].unbind(get_port_name(BASE_PORT + remove_id + 1));
                     childs.erase(std::next(childs.begin() + i));
                     flag_get_remove_id = true;
@@ -168,7 +169,7 @@ int main(int argc, char const *argv[])
         if (command == "kill") {
             for (int i = 0; i < childs.size(); i ++) {
 
-                send_message(childs[i], "get_child_id_list 0");
+                send_message(childs[i], "get_id");
                 result = recieve_message(childs[i]);
 
                 send_message(childs[i], "kill");
@@ -256,33 +257,11 @@ int main(int argc, char const *argv[])
             continue;
         }
 
-        if (command == "get_child_id_list") {
-            int depth;
-            command_stream >> depth;
-
-            if (depth == 0) {
-
-                msg_str = std::to_string(id) + " ";
-                send_message(parent_socket, msg_str);
-
-                continue;
-            }
-
-            std::string child_list = " ";
-
-            msg_str = "get_child_id_list " + std::to_string(depth - 1);
-
-            for (int i = 0; i < childs.size(); i ++) {
-
-                send_message(childs[i], msg_str);
-                result = recieve_message(childs[i]);
-                if (result.substr(0, 5) != "Error") {
-                    child_list += result;
-                }
-            }
-
-            send_message(parent_socket, child_list);
-
+        if (command == "get_id") {
+            
+            msg_str = std::to_string(id) + " ";
+            send_message(parent_socket, msg_str);
+            
             continue;
         }
 
