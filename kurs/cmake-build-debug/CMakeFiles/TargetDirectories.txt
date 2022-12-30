@@ -1,4 +1,0 @@
-/home/lyutoev/workshop/os/OS/kurs/cmake-build-debug/CMakeFiles/test_job.dir
-/home/lyutoev/workshop/os/OS/kurs/cmake-build-debug/CMakeFiles/kurs.dir
-/home/lyutoev/workshop/os/OS/kurs/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/lyutoev/workshop/os/OS/kurs/cmake-build-debug/CMakeFiles/rebuild_cache.dir

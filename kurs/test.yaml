@@ -1,4 +1,21 @@
+limit_job: 10
+
+tree:
+  - 1:
+    - 2
+    - 3
+  - 2:
+    - 4
+  - 3:
+    - 4
+  - 4:
 
 job:
-  job_id: 1
-  
+  - 1:
+      file: "./test_job"
+  - 2:
+      file: "./test_job"
+  - 3:
+      file: "./test_job"
+  - 4:
+      file: "./test_job"
