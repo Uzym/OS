@@ -4,19 +4,21 @@
 #include "iostream"
 #include <unistd.h>
 #include <fcntl.h>
+#include <semaphore.h>
 #include "../include/note.h"
+
+int sem_get(sem_t *sem)
+{
+    int state;
+    sem_getvalue(sem, &state);
+    return state;
+}
 
 int main()
 {
 
     int fdAC[2];
     if (pipe(fdAC) == -1) {
-        std::cerr << "pipe error\n";
-        return EXIT_FAILURE;
-    }
-
-    int fdCA[2];
-    if (pipe(fdCA) == -1) {
         std::cerr << "pipe error\n";
         return EXIT_FAILURE;
     }
@@ -31,6 +33,36 @@ int main()
     if (pipe(fdCB) == -1) {
         std::cerr << "pipe error\n";
         return EXIT_FAILURE;
+    }
+
+    sem_unlink("semA");
+    sem_t* semA = sem_open("semA", O_CREAT, 0777, 1);
+    if (semA == SEM_FAILED) {
+        std::cerr << "semA error\n";
+        return EXIT_FAILURE;
+    }
+    while (sem_get(semA) > START) {
+        sem_wait(semA);
+    }
+
+    sem_unlink("semB");
+    sem_t* semB = sem_open("semB", O_CREAT, 0777, 0);
+    if (semB == SEM_FAILED) {
+        std::cerr << "semB error\n";
+        return EXIT_FAILURE;
+    }
+    while (sem_get(semB) > START) {
+        sem_wait(semB);
+    }
+    
+    sem_unlink("semC");
+    sem_t* semC = sem_open("semC", O_CREAT, 0777, 0);
+    if (semC == SEM_FAILED) {
+        std::cerr << "semC error\n";
+        return EXIT_FAILURE;
+    }
+    while (sem_get(semC) > START) {
+        sem_wait(semC);
     }
 
     pid_t B_pid = fork();
@@ -57,8 +89,6 @@ int main()
             "./C",
             std::to_string(fdAC[FD_OUTPUT]).c_str(),
             std::to_string(fdAC[FD_INPUT]).c_str(),
-            std::to_string(fdCA[FD_OUTPUT]).c_str(),
-            std::to_string(fdCA[FD_INPUT]).c_str(),
             std::to_string(fdCB[FD_OUTPUT]).c_str(),
             std::to_string(fdCB[FD_INPUT]).c_str(),
             NULL
@@ -66,34 +96,50 @@ int main()
     }
     
     std::string str;
-    char char_end = '\n', char_ok;
+    size_t size;
     while (getline(std::cin, str)) {
-        size_t size = str.size();
-        write(
-            fdAC[FD_INPUT],
-            &size, 
-            sizeof(size)
-        );
+        size = str.size();
         write(
             fdAB[FD_INPUT], 
             &size, 
             sizeof(size)
         );
+        write(
+            fdAC[FD_INPUT],
+            &size, 
+            sizeof(int)
+        );
         for (int i = 0; i < size; i ++) {
             char c = str[i];
-            std::cout << "A: " << c << std::endl;
-            write(fdAC[FD_INPUT], &c, sizeof(char));
+            write(
+                fdAC[FD_INPUT], 
+                &c, 
+                sizeof(char)
+            );
         }
-        std::cout << "SSSSSSSSSSSSSSSSSs\n";
-        read(fdCA[FD_OUTPUT], &char_ok, sizeof(char));
+        sem_post(semB);
+        sem_wait(semA);
     }
+    
+    while (sem_get(semC) < END) {
+        sem_post(semC);
+    }
+    while (sem_get(semB) < END) {
+        sem_post(semB);
+    }
+
+    sem_close(semA);
+    sem_close(semB);
+    sem_close(semC);
+
+    sem_destroy(semA);
+    sem_destroy(semB);
+    sem_destroy(semC);
 
     close(fdAB[FD_OUTPUT]);
     close(fdAB[FD_INPUT]);
     close(fdAC[FD_OUTPUT]);
     close(fdAC[FD_INPUT]);
-    close(fdCA[FD_OUTPUT]);
-    close(fdCA[FD_INPUT]);
     close(fdCB[FD_OUTPUT]);
     close(fdCB[FD_INPUT]);
 

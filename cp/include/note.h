@@ -6,4 +6,7 @@
 #define STDIN 0
 #define STDOUT 1
 
+#define END 2
+#define START 0
+
 #endif
